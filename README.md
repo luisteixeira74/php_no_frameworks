@@ -23,3 +23,5 @@ http://localhost:8080/home
 http://localhost:8080/user (Lista de Usuários)
 
 http://localhost:8080/user/create (Cadastrar usuário)
+
+http://localhost:8080/user/show/1 (Mostrar um usuário para atualizar)

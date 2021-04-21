@@ -46,4 +46,15 @@ class Users
     return $result->fetchAll(PDO::FETCH_ASSOC);
   }
 
+  public static function update($id, $nome)
+  {
+    $conn = new Database();
+    $result = $conn->executeQuery('UPDATE users SET name=:NOME WHERE ID=:ID', array(
+        ':NOME' => $nome,
+        ':ID' => $id
+    ));
+
+    return $result->fetchAll(PDO::FETCH_ASSOC);
+  }
+
 }

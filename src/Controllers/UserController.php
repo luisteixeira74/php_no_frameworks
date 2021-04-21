@@ -17,10 +17,7 @@ class UserController extends \App\Core\Controller
 
   /**
   * chama a view show.php da seguinte forma /user/show passando um parâmetro 
-  * via URL /user/show/id e é retornado um array contendo (ou não) um determinado
-  * usuário. Além disso é verificado se foi passado ou não um id pela url, caso
-  * não seja informado, é chamado a view de página não encontrada.
-  * @param  int   $id   Identificado do usuário.
+  * @param  int   $id  do usuário.
   */
   public function show($id = null)
   {
@@ -46,5 +43,15 @@ class UserController extends \App\Core\Controller
         header("Location: http://localhost:8080/user/index");
         die();
       }
+  }
+
+  public function update()
+  {
+    if ($_POST['name'] && $_POST['id']) {
+      $users = $this->model('Users');
+      $data = $users::update((int) $_POST['id'], $_POST['name']);
+      header("Location: http://localhost:8080/user/show/". (int) $_POST['id']);
+      die();
+    }
   }
 }
