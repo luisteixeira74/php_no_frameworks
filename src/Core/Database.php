@@ -3,18 +3,20 @@
 namespace App\Core;
 
 use PDO;
+include '../config.php';
+
 class Database extends PDO
 {
   // configuração do banco de dados
-  private $DB_NAME = 'crud_php';
-  private $DB_USER = 'root';
-  private $DB_PASSWORD = 'admin';
-  private $DB_HOST = 'localhost';
-  private $DB_PORT = 5432;
-
+  private $DB_NAME = DBNAME;
+  private $DB_USER = DBUSER;
+  private $DB_PASSWORD = DBPWD;
+  private $DB_HOST = DBHOST;
+  private $DB_PORT = DBPORT;
+  
   // armazena a conexão
   private $conn;
-
+  
   public function __construct()
   {
     $this->conn = new PDO("mysql:dbname=$this->DB_NAME;host=$this->DB_HOST", $this->DB_USER, $this->DB_PASSWORD);
